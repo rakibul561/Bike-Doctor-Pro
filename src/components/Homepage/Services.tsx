@@ -2,7 +2,7 @@ import React from 'react';
 import {services} from '../../components/lib/servise'
 import ServiceCard from '../cards/ServiceCard';
 const Services:React.FC = () => {
-    console.log(services)
+    
     return (
         <div>
              <div className="text-slate-800 mb-24">
