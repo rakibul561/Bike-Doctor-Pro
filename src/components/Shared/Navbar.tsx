@@ -54,6 +54,7 @@ const Navbar: React.FC = () => {
           <FaShoppingCart className="text-xl" />
             <IoMdSearch  className="text-xl" />
             <a className="btn btn-outline px-8 btn-primary">Appointment</a>
+            <Link href={'/login'} className="btn  px-8 btn-primary">Login</Link>
           </div>
         </div>
       </div>
