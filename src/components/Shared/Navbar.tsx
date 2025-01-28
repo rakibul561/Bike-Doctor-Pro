@@ -1,31 +1,16 @@
+'use client'
+import { signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import { FaShoppingCart } from "react-icons/fa";
 import { IoMdSearch } from "react-icons/io";
 
 const Navbar: React.FC = () => {
-  const navItem = [
-    {
-      title: "Home",
-      path: "/",
-    },
-    {
-      title: "About",
-      path: "/about",
-    },
-    {
-      title: "Services",
-      path: "/services",
-    },
-    {
-      title: "Blog",
-      path: "/blog",
-    },
-    {
-      title: "Contact",
-      path: "/contact",
-    },
-  ];
+
+
+  const session = useSession();
+  console.log(session)
+ 
 
   return (
     <div className="bg-base-100 border text-slate-900">
@@ -54,12 +39,39 @@ const Navbar: React.FC = () => {
           <FaShoppingCart className="text-xl" />
             <IoMdSearch  className="text-xl" />
             <a className="btn btn-outline px-8 btn-primary">Appointment</a>
-            <Link href={'/login'} className="btn  px-8 btn-primary">Login</Link>
+           { !session.data?
+            <Link href={'/login'} className="btn  px-8 btn-primary">Login</Link> 
+            :
+            <button onClick={ () => signOut()} className="btn  px-8 btn-primary" >Logout</button>
+            }
           </div>
         </div>
       </div>
     </div>
   );
 };
+
+const navItem = [
+  {
+    title: "Home",
+    path: "/",
+  },
+  {
+    title: "About",
+    path: "/about",
+  },
+  {
+    title: "Services",
+    path: "/services",
+  },
+  {
+    title: "Blog",
+    path: "/blog",
+  },
+  {
+    title: "Contact",
+    path: "/contact",
+  },
+];
 
 export default Navbar;

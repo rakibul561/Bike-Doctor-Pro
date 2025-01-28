@@ -32,7 +32,7 @@ export const POST = async (req: Request) => {
   } catch (error) {
     console.error("Error:", error);  // এখানে কনসোল লগ
     return new Response(
-      JSON.stringify({ message: 'Something went wrong', error: error.message }),
+      JSON.stringify({ message: 'Something went wrong', error: error }),
       { status: 500 }
     );
   }
