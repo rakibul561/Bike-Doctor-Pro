@@ -1,13 +1,24 @@
 "use client";
 
+
 import SocialSignin from "@/components/Shared/SocialSignin ";
 import Image from "next/image";
 import Link from "next/link";
-import React, {  } from "react";
-
+import React from "react";
 
 const SignUpPage = () => {
- 
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const formData = new FormData(event.currentTarget);
+    const newUser = {
+      name: formData.get("name") as string,
+      email: formData.get("email") as string,
+      password: formData.get("password") as string,
+    };
+
+    console.log(newUser);
+  };
 
   return (
     <div className="container px-24 mx-auto py-24">
@@ -15,8 +26,8 @@ const SignUpPage = () => {
         <div>
           <Image
             src="/assets/images/login/login.svg"
-            height="540"
-            width="540"
+            height={540}
+            width={540}
             alt="login image"
           />
         </div>
@@ -24,8 +35,8 @@ const SignUpPage = () => {
           <h6 className="text-3xl font-semibold text-primary text-center mb-12">
             Sign Up
           </h6>
-          <form action="">
-            <label htmlFor="email">Name</label> <br />
+          <form onSubmit={handleSubmit}>
+            <label htmlFor="name">Name</label> <br />
             <input
               type="text"
               name="name"
@@ -35,7 +46,7 @@ const SignUpPage = () => {
             <br /> <br />
             <label htmlFor="email">Email</label> <br />
             <input
-              type="text"
+              type="email"
               name="email"
               placeholder="your email"
               className="mt-3 w-full input input-bordered"
@@ -58,7 +69,7 @@ const SignUpPage = () => {
           </form>
           <div>
             <h6 className="my-12 text-center">or sign in with</h6>
-            <SocialSignin  />
+            <SocialSignin/>
             <h6 className="my-12 text-center">
               Already have account ?{" "}
               <Link className="text-primary font-semibold" href={"/login"}>
