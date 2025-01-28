@@ -1,5 +1,7 @@
 import { connectDB } from "@/components/lib/connectDB";
 
+import bcrypt from "bcrypt";
+
 export const POST = async (req: Request) => {
   try {
     const newUser = await req.json();  // রিকোয়েস্ট বডি প্যার্স করা
@@ -8,7 +10,6 @@ export const POST = async (req: Request) => {
     const db = await connectDB();
     const userCollection = db.collection('users');
     
-    // ইউজার এক্সিস্ট করে কিনা চেক করা
     const exists = await userCollection.findOne({ email: newUser.email });
     if (exists) {
       console.log("User already exists:", exists);
@@ -17,10 +18,11 @@ export const POST = async (req: Request) => {
         { status: 304 }
       );
     }
+    
+    const hashPassword = bcrypt.hashSync(newUser.password, 14);
 
-    // নতুন ইউজার ইনসার্ট করা
-    const resp = await userCollection.insertOne(newUser);
-    console.log("Inserted User:", resp);  // লগ দেখুন
+    const resp = await userCollection.insertOne({...newUser, password: hashPassword});
+    console.log("Inserted User:", resp);  
 
     return new Response(
       JSON.stringify({ message: 'User created successfully' }),
