@@ -26,7 +26,7 @@ const SocialSignin:React.FC = () => {
       </button>
 
       <button  className="btn  flex items-center justify-center text-primary">
-        <BsGithub />
+        <BsGithub  onClick={() =>handleSignin('github')} />
       </button>
     </div>
   );

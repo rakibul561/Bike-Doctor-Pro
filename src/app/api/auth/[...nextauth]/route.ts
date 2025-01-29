@@ -5,12 +5,22 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcrypt";
 import { MongoClient } from "mongodb";
 import GoogleProvider from "next-auth/providers/google";
+import GitHubProvider from "next-auth/providers/github";
 
+// Ensure Google environment variables are defined
 const googleClientId = process.env.NEXT_GOOGLE_CLIENT_ID;
 const googleClientSecret = process.env.NEXT_GOOGLE_CLIENT_SECRET;
 
 if (!googleClientId || !googleClientSecret) {
     throw new Error('Google Client ID or Client Secret is missing in environment variables.');
+}
+
+// Ensure GitHub environment variables are defined
+const githubClientId = process.env.NEXT_GITHUB_ID;
+const githubClientSecret = process.env.NEXT_GITHUB_SECRET;
+
+if (!githubClientId || !githubClientSecret) {
+    throw new Error('GitHub Client ID or Client Secret is missing in environment variables.');
 }
 
 const handler = NextAuth({
@@ -52,6 +62,11 @@ const handler = NextAuth({
         GoogleProvider({
             clientId: googleClientId,
             clientSecret: googleClientSecret
+        }),
+
+        GitHubProvider({
+            clientId: githubClientId, // Now guaranteed to be a string
+            clientSecret: githubClientSecret // Now guaranteed to be a string
         }),
     ],
     callbacks: {},
