@@ -1,20 +1,25 @@
 "use client"
 
 
-import { signIn } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 import React from "react";
 import { BsGithub, BsGoogle } from "react-icons/bs";
 
 const SocialSignin:React.FC = () => {
-   
-  const handleSignin = async (provider: string) =>{
+  const router = useRouter();
+  const session = useSession();
+  const handleSignin =  (provider: string) =>{
     console.log(provider);
     
   
     // const resp = await signIn(provider)
-    const resp = await signIn(provider)
+    const resp =  signIn(provider, {redirect: false})
   console.log(resp);
     
+  if(session.status === 'authenticated'){
+    router.push('/')
+  }
   } 
   
  
