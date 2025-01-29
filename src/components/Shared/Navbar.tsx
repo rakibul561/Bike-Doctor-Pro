@@ -9,7 +9,7 @@ const Navbar: React.FC = () => {
 
 
   const session = useSession();
-  console.log(session)
+  // console.log(session)
  
 
   return (

@@ -4,11 +4,19 @@ import NextAuth, { Awaitable, RequestInternal, User } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcrypt";
 import { MongoClient } from "mongodb";
+import GoogleProvider from "next-auth/providers/google";
+
+const googleClientId = process.env.NEXT_GOOGLE_CLIENT_ID;
+const googleClientSecret = process.env.NEXT_GOOGLE_CLIENT_SECRET;
+
+if (!googleClientId || !googleClientSecret) {
+    throw new Error('Google Client ID or Client Secret is missing in environment variables.');
+}
 
 const handler = NextAuth({
     session: {
         strategy: "jwt",
-        maxAge: 3600 * 24 * 60 * 60,
+        maxAge: 30 * 24 * 60 * 60,
     },
     providers: [
         CredentialsProvider({
@@ -40,7 +48,11 @@ const handler = NextAuth({
 
                 return { id: currentUser._id.toString(), email: currentUser.email } as User;
             }
-        })
+        }),
+        GoogleProvider({
+            clientId: googleClientId,
+            clientSecret: googleClientSecret
+        }),
     ],
     callbacks: {},
     pages: {
