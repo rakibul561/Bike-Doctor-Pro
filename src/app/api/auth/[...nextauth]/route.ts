@@ -69,7 +69,35 @@ const handler = NextAuth({
             clientSecret: githubClientSecret // Now guaranteed to be a string
         }),
     ],
-    callbacks: {},
+    callbacks: {
+        async signIn({ user, account }) {
+          if (account?.provider === 'google' || account?.provider === 'github') {
+            const { name, email, image } = user;
+            try {
+              const db = await connectDB(); // Ensure connectDB is properly defined
+              const userCollection = db.collection('users');
+              const userExists = await userCollection.findOne({ email });
+      
+              if (!userExists) {
+                // Insert the user if they don't exist
+                await userCollection.insertOne({ name, email, image });
+              }
+      
+              // Return true to allow sign-in
+              return true;
+            } catch (error) {
+              console.error('Error during sign-in:', error);
+              // Return false to deny sign-in in case of an error
+              return false;
+            }
+          } else {
+            // Allow sign-in for other providers
+            return true;
+          }
+        },
+      },
+
+
     pages: {
         signIn: '/login'
     }
