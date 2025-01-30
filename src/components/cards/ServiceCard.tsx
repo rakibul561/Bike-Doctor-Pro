@@ -6,10 +6,17 @@ import { FaLongArrowAltRight } from "react-icons/fa";
 // টাইপ ডিফাইন
 interface Service {
   _id: string;
+  service_id: string;
   title: string;
   img: string;
   price: string;
+  description: string;
+  facility: {
+    name: string;
+    details: string;
+  }[];
 }
+
 
 interface ServiceCardProps {
   service: Service;
