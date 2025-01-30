@@ -4,19 +4,20 @@ import React from "react";
 import { FaLongArrowAltRight } from "react-icons/fa";
 
 // টাইপ ডিফাইন
+interface Facility {
+  name: string;
+  details: string;
+}
+
 interface Service {
   _id: string;
   service_id: string;
   title: string;
   img: string;
-  price: string;
+  price: number; // price এর টাইপ পরিবর্তন করে number করা হয়েছে
   description: string;
-  facility: {
-    name: string;
-    details: string;
-  }[];
+  facility: Facility[];
 }
-
 
 interface ServiceCardProps {
   service: Service;
@@ -24,6 +25,7 @@ interface ServiceCardProps {
 
 const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
   const { title, img, price, _id } = service || {};
+  console.log(service)
   return (
     <div className="card card-compact bg-base-100 shadow-xl">
       <figure className="overflow-hidden h-[30vh]">
@@ -34,7 +36,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
         <div className="card-actions justify-between items-center">
           <h6 className="text-primary font-semibold">Price : ${price}</h6>
           <Link href={`/services/${_id}`}>
-          <FaLongArrowAltRight className="text-2xl text-primary" />
+            <FaLongArrowAltRight className="text-2xl text-primary" />
           </Link>
         </div>
       </div>
