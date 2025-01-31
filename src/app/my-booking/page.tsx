@@ -95,7 +95,7 @@ const handleDelete = async (id: never) => {
                     <td>{date}</td>
                     <td>
                       <div className="flex items-center space-x-3">
-                        <Link href={`/my-bookings/update/${_id}`}>
+                        <Link href={`/my-booking/update/${_id}`}>
                           <button className="btn btn-primary">Edit</button>
                         </Link>
                         <button
