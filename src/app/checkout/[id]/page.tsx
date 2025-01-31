@@ -34,9 +34,30 @@ const Checkout: React.FC<CheckoutParams> = ({ params }) => {
 
   const { _id, title, description, img, price, facility } = service || {};
 
-  const handleBooking = async (event: React.FormEvent) => {
+  const handleBooking = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    // Handle booking logic here
+    const form = event.currentTarget; // Type-safe reference to form
+    const formData = new FormData(form);
+
+    const newBooking = {
+      email: data?.user?.email,
+      name: data?.user?.name,
+      address: formData.get("address") as string,
+      phone: formData.get("phone") as string,
+      date: formData.get("date") as string,
+      serviceTitle: title,
+      serviceID: _id,
+      price: price
+    };
+
+     const resp = await fetch('http://localhost:3000/checkout/api/new-booking',{
+        method: "POST",
+        body: JSON.stringify(newBooking),
+        headers: {
+            "content-type" : "application/json"
+        }
+     })
+     console.log(resp)
   };
 
   useEffect(() => {
@@ -69,7 +90,7 @@ const Checkout: React.FC<CheckoutParams> = ({ params }) => {
                 <span className="label-text">Name</span>
               </label>
               <input
-                defaultValue={data?.user?.name || ""} // Fallback to empty string
+                defaultValue={data?.user?.name || ""}
                 type="text"
                 name="name"
                 className="input input-bordered"
@@ -91,7 +112,7 @@ const Checkout: React.FC<CheckoutParams> = ({ params }) => {
                 <span className="label-text">Email</span>
               </label>
               <input
-                defaultValue={data?.user?.email || ""} // Fallback to empty string
+                defaultValue={data?.user?.email || ""}
                 type="text"
                 name="email"
                 placeholder="email"
@@ -103,7 +124,7 @@ const Checkout: React.FC<CheckoutParams> = ({ params }) => {
                 <span className="label-text">Due amount</span>
               </label>
               <input
-                defaultValue={price || ""} // Fallback to empty string
+                defaultValue={price || ""}
                 readOnly
                 type="text"
                 name="price"
