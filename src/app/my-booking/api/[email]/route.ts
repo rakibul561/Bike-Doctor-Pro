@@ -21,7 +21,7 @@ export const GET = async (request: any,{ params }: { params: {
             return NextResponse.json({ error: "Service not found" }, { status: 404 });
         }
 
-        return NextResponse.json({newBooking}, { status: 200 });
+        return NextResponse.json({}, { status: 200 });
     } catch (error) {
         console.error("Error fetching service:", error);
         return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
