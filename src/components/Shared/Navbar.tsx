@@ -22,16 +22,26 @@ const Navbar: React.FC = () => {
         </div>
         <div className="navbar-center hidden lg:flex">
           <div className="flex items-center space-x-6">
-            {navItem?.map((item) => (
+            {/* {navItem?.map((item) => (
               <Link
-                className="font-bold hover:text-primary"
+                
                 href={item.title}
                 key={item.path}
               >
                 {" "}
                 {item.title}{" "}
               </Link>
-            ))}
+            ))} */}
+            
+           <Link href={'/'} className="font-bold hover:text-primary"> Home</Link> 
+           <Link href={'/about'} className="font-bold hover:text-primary"> About</Link> 
+           <Link href={'/services'} className="font-bold hover:text-primary">Services </Link> 
+           <Link href={'/my-booking'} className="font-bold hover:text-primary"> My Booking</Link> 
+           <Link href={'/blog'} className="font-bold hover:text-primary"> Blog</Link> 
+           <Link href={'/contact'} className="font-bold hover:text-primary"> contact</Link> 
+
+
+       
           </div>
         </div>
         <div className="navbar-end">
@@ -51,29 +61,33 @@ const Navbar: React.FC = () => {
   );
 };
 
-const navItem = [
-  {
-    title: "Home",
-    path: "/",
-  },
-  {
-    title: "About",
-    path: "/about",
-  },
-  {
-    title: "Services",
-    path: "/services",
-  },
+// const navItem = [
+//   {
+//     title: "Home",
+//     path: "/",
+//   },
+//   {
+//     title: "About",
+//     path: "/about",
+//   },
+//   {
+//     title: "Services",
+//     path: "/services",
+//   },
+//   {
+//     title: "My Booking",
+//     path: "/my-booking",
+//   },
  
-  {
-    title: "Blog",
-    path: "/blog",
-  },
-  {
-    title: "Contact",
-    path: "/contact",
-  },
+//   {
+//     title: "Blog",
+//     path: "/blog",
+//   },
+//   {
+//     title: "Contact",
+//     path: "/contact",
+//   },
   
-];
+// ];
 
 export default Navbar;
