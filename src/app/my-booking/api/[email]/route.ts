@@ -2,28 +2,35 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import { connectDB } from "@/components/lib/connectDB";
-import { ObjectId } from "mongodb";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-export const GET = async (request: any,{ params }: { params: {
-    email: unknown; id: string 
-} } ) => {
-    try {
-     
-        const db = await connectDB();
-        const bookingCollection = db.collection("bookings");
-
-
-
-        const newBooking = await bookingCollection.find({email: params.email}).toArray();
-
-        if (!newBooking) {
-            return NextResponse.json({ error: "Service not found" }, { status: 404 });
-        }
-
-        return NextResponse.json({}, { status: 200 });
-    } catch (error) {
-        console.error("Error fetching service:", error);
-        return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
+export const GET = async (
+  request: NextRequest,
+  { params }: { params: { email: string } }
+) => {
+  try {
+    // Ensure params are accessed safely
+    const email = params?.email;
+    if (!email) {
+      return NextResponse.json(
+        { error: "Email parameter is required" },
+        { status: 400 }
+      );
     }
+
+    // Connect to the database
+    const db = await connectDB();
+    const bookingCollection = db.collection("bookings");
+
+    // Fetch bookings based on email
+    const myBooking = await bookingCollection.find({ email }).toArray();
+
+    return NextResponse.json({ bookings: myBooking }, { status: 200 });
+  } catch (error) {
+    console.error("Error fetching bookings:", error);
+    return NextResponse.json(
+      { error: "Internal Server Error" },
+      { status: 500 }
+    );
+  }
 };

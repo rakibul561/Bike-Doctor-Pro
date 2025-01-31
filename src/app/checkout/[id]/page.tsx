@@ -5,8 +5,8 @@ import { getServicesDetails } from "@/Services/getServices";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { toast, ToastContainer } from "react-toastify";
+
 
 interface Service {
   _id: string;
@@ -33,12 +33,11 @@ const Checkout: React.FC<CheckoutParams> = ({ params }) => {
   };
 
   const { _id, title, description, img, price, facility } = service || {};
-
   const handleBooking = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const form = event.currentTarget; // Type-safe reference to form
+    const form = event.currentTarget;
     const formData = new FormData(form);
-
+  
     const newBooking = {
       email: data?.user?.email,
       name: data?.user?.name,
@@ -47,18 +46,31 @@ const Checkout: React.FC<CheckoutParams> = ({ params }) => {
       date: formData.get("date") as string,
       serviceTitle: title,
       serviceID: _id,
-      price: price
+      price: price,
     };
-
-     const resp = await fetch('http://localhost:3000/checkout/api/new-booking',{
+  
+    try {
+      const resp = await fetch("http://localhost:3000/checkout/api/new-booking", {
         method: "POST",
         body: JSON.stringify(newBooking),
         headers: {
-            "content-type" : "application/json"
-        }
-     })
-     console.log(resp)
+          "Content-Type": "application/json",
+        },
+      });
+  
+      const response = await resp.json();
+  
+      if (resp.ok) {
+        toast.success(response.message || "Booking successful!");
+      } else {
+        toast.error(response.error || "Booking failed!");
+      }
+    } catch (error) {
+      console.error("Error submitting booking:", error);
+      toast.error("Something went wrong. Please try again.");
+    }
   };
+                        
 
   useEffect(() => {
     loadService();
