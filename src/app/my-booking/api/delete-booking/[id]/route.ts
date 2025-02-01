@@ -1,6 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
 import { connectDB } from "@/components/lib/connectDB";
 import { ObjectId } from "mongodb";
 import { NextRequest, NextResponse } from "next/server";
@@ -14,9 +11,10 @@ export async function GET(
   { params }: { params: { id?: string } }
 ) {
   try {
-    if (!params?.id) {
+    // Validate if the ID exists and is a valid ObjectId
+    if (!params?.id || !ObjectId.isValid(params.id)) {
       return NextResponse.json(
-        { error: "Booking ID parameter is required" },
+        { error: "Invalid or missing booking ID" },
         { status: 400 }
       );
     }
@@ -54,22 +52,24 @@ export async function PATCH(
   { params }: { params: { id?: string } }
 ) {
   try {
-    if (!params?.id) {
+    // Validate if the ID exists and is a valid ObjectId
+    if (!params?.id || !ObjectId.isValid(params.id)) {
       return NextResponse.json(
-        { error: "Booking ID parameter is required" },
+        { error: "Invalid or missing booking ID" },
         { status: 400 }
       );
     }
 
-    const objectId = new ObjectId(params.id);
     const db = await connectDB();
     const bookingCollection = db.collection("bookings");
 
-    const updateDoc = await request.json();
+    const {phone, date, address} = await request.json();
 
     const resp = await bookingCollection.updateOne(
-      { _id: objectId },
-      { $set: { ...updateDoc } }
+      { _id: new ObjectId(params.id) },
+      { $set: { 
+        phone, date, address
+       } }
     );
 
     if (resp.matchedCount === 0) {
@@ -101,18 +101,20 @@ export async function DELETE(
   { params }: { params: { id?: string } }
 ) {
   try {
-    if (!params?.id) {
+    // Validate if the ID exists and is a valid ObjectId
+    if (!params?.id || !ObjectId.isValid(params.id)) {
       return NextResponse.json(
-        { error: "Booking ID parameter is required" },
+        { error: "Invalid or missing booking ID" },
         { status: 400 }
       );
     }
 
-    const objectId = new ObjectId(params.id);
     const db = await connectDB();
     const bookingCollection = db.collection("bookings");
 
-    const resp = await bookingCollection.deleteOne({ _id: objectId });
+    const resp = await bookingCollection.deleteOne({
+      _id: new ObjectId(params.id),
+    });
 
     if (resp.deletedCount === 0) {
       return NextResponse.json(
