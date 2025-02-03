@@ -18,6 +18,10 @@ const Features = () => {
         <Image  width={100} height={200} src={"/assets/icons/check.svg"} alt="iamge"/>
         <h1 className="text-center font-bold mt-2">100% Guranty</h1>
         </div>
+      <div className="w-32 p-8 hover:text-primary border">
+        <Image  width={100} height={200} src={"/assets/icons/check.svg"} alt="iamge"/>
+        <h1 className="text-center font-bold mt-2">100% Guranty</h1>
+        </div>
 
         <div className="w-32 p-8 hover:text-primary border">
         <Image  width={100} height={200} src={"/assets/icons/deliveryt.svg"} alt="iamge"/>
