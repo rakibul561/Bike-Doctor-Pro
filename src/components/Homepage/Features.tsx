@@ -13,6 +13,24 @@ const Features = () => {
           believable.
         </p>
       </div>
+      <div className="text-center container mx-auto">
+        <h3 className="text-2xl font-bold text-orange-600">Core Features</h3>
+        <h2 className="text-5xl">Why Choose Us</h2>
+        <p>
+          the majority have suffered alteration in some form, by injected
+          humour, or randomised <br /> words which do not look even slightly
+          believable.
+        </p>
+      </div>
+      <div className="text-center container mx-auto">
+        <h3 className="text-2xl font-bold text-orange-600">Core Features</h3>
+        <h2 className="text-5xl">Why Choose Us</h2>
+        <p>
+          the majority have suffered alteration in some form, by injected
+          humour, or randomised <br /> words which do not look even slightly
+          believable.
+        </p>
+      </div>
       <div className="flex  lg:ml-44 lg:gap-20 gap-6 mt-5">
       <div className="w-32 p-8 hover:text-primary border">
         <Image  width={100} height={200} src={"/assets/icons/check.svg"} alt="iamge"/>
