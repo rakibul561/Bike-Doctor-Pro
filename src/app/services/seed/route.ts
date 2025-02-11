@@ -4,7 +4,7 @@ import { services } from "@/components/lib/servise";
  
 
 
- 
+
   export const GET = async () => {
     const db = await connectDB();
     const servicesCollection = db.collection('services');
@@ -13,8 +13,6 @@ import { services } from "@/components/lib/servise";
      await servicesCollection.deleteMany();
      const resp = await servicesCollection.insertMany(services);
      return Response.json( { message: 'seeded succesfully'})
-   
-        
     } catch (error) {
         console.log(error)
         
