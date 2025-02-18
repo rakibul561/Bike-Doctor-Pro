@@ -144,18 +144,7 @@ export const product = [
           "description": "Long-lasting car battery for consistent power supply.",
           "img": "https://i.ibb.co/fDbYZyV/car-battery.jpg"
         },
-        {
-          "name": "Car Battery",
-          "price": "20.00",
-          "description": "Long-lasting car battery for consistent power supply.",
-          "img": "https://i.ibb.co/fDbYZyV/car-battery.jpg"
-        },
-        {
-          "name": "Car Battery",
-          "price": "20.00",
-          "description": "Long-lasting car battery for consistent power supply.",
-          "img": "https://i.ibb.co/fDbYZyV/car-battery.jpg"
-        },
+      
         {
           "name": "Car Battery",
           "price": "20.00",
