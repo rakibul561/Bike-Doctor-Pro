@@ -80,53 +80,57 @@ export const services = [
     {
         "service_id": "07",
         "title": "Brake Adjustment",
-        "img": "https://i.ibb.co/XYZ123/brake.jpg",
-        "price": "20.00",
-        "description": "Get your bike's brake system adjusted for a safe and smooth ride.",
+        "img": "https://i.ibb.co/VWpDScXc/mechanic-changing-brake-discs-car-service-1303-26909.jpg",
+        "price": "30.00",
+        "description": "Ensure your bike's braking system is responsive and reliable with our expert brake adjustment service.",
         "facility": [
-            { "name": "Instant Bike Services", "details": "Fast and reliable services for your bike's needs." },
-            { "name": "24/7 Assistance", "details": "Our team is available around the clock for your convenience." },
-            { "name": "Customer-Centric Approach", "details": "We prioritize your satisfaction with every service." },
-            { "name": "Affordable Prices", "details": "Quality service at the most reasonable rates." }
+            { "name": "Safety First", "details": "We ensure your brakes are in perfect working condition for your safety." },
+            { "name": "Quick Service", "details": "Fast brake adjustments while you wait." }
         ]
     },
     {
         "service_id": "08",
-        "title": "Suspension Repair",
-        "img": "https://i.ibb.co/ABC456/suspension.jpg",
-        "price": "70.00",
-        "description": "Repair and adjust your suspension system for maximum comfort and control.",
+        "title": "Chain Lubrication and Cleaning",
+        "img": "https://i.ibb.co/b5fMCVYP/car-maintenance-1098-18532.jpg",
+        "price": "20.00",
+        "description": "Keep your bike's chain smooth and rust-free with our professional cleaning and lubrication service.",
         "facility": [
-            { "name": "Instant Bike Services", "details": "Fast and reliable services for your bike's needs." },
-            { "name": "24/7 Assistance", "details": "Our team is available around the clock for your convenience." },
-            { "name": "Customer-Centric Approach", "details": "We prioritize your satisfaction with every service." },
-            { "name": "Affordable Prices", "details": "Quality service at the most reasonable rates." }
+            { "name": "Quality Lubricants", "details": "We use the best lubricants to ensure long-lasting results." },
+            { "name": "Rust Prevention", "details": "Protect your bike from wear and tear." }
         ]
     },
     {
         "service_id": "09",
-        "title": "Chain Lubrication",
-        "img": "https://i.ibb.co/DEF789/chain.jpg",
-        "price": "5.00",
-        "description": "Ensure a smooth and quiet ride with proper chain lubrication.",
+        "title": "Suspension Tuning",
+        "img": "https://i.ibb.co/xvm0Pz4/brutal-mechanic-fixing-hubcap-car-wheel-7502-4419.jpg",
+        "price": "60.00",
+        "description": "Improve your bike’s comfort and handling with our expert suspension tuning service.",
         "facility": [
-            { "name": "Instant Bike Services", "details": "Fast and reliable services for your bike's needs." },
-            { "name": "24/7 Assistance", "details": "Our team is available around the clock for your convenience." },
-            { "name": "Customer-Centric Approach", "details": "We prioritize your satisfaction with every service." },
-            { "name": "Affordable Prices", "details": "Quality service at the most reasonable rates." }
+            { "name": "Customized Setup", "details": "Adjust suspension to fit your riding style." },
+            { "name": "Performance Boost", "details": "Enhance stability and control." }
         ]
     },
     {
         "service_id": "10",
-        "title": "Tyre Replacement",
-        "img": "https://i.ibb.co/UVW123/tyre.jpg",
-        "price": "45.00",
-        "description": "Replace worn-out tyres to ensure safety and optimal performance.",
+        "title": "Tire Replacement",
+        "img": "https://i.ibb.co/xvm0Pz4/brutal-mechanic-fixing-hubcap-car-wheel-7502-4419.jpg",
+        "price": "80.00",
+        "description": "Get a brand-new tire installed for better grip and a safer ride.",
         "facility": [
-            { "name": "Instant Bike Services", "details": "Fast and reliable services for your bike's needs." },
-            { "name": "24/7 Assistance", "details": "Our team is available around the clock for your convenience." },
-            { "name": "Customer-Centric Approach", "details": "We prioritize your satisfaction with every service." },
-            { "name": "Affordable Prices", "details": "Quality service at the most reasonable rates." }
+            { "name": "Top-Quality Tires", "details": "We offer durable and reliable tires for all bike types." },
+            { "name": "Fast Installation", "details": "Get your tires replaced in no time." }
+        ]
+    },
+    {
+        "service_id": "11",
+        "title": "Bike Wash and Detailing",
+      "img": "https://i.ibb.co/nsT0xv8p/top-angle-view-cropped-biker-polishing-pipe-his-motorcycle-1098-19056.jpg",
+       
+        "price": "25.00",
+        "description": "Give your bike a fresh look with our complete wash and detailing service.",
+        "facility": [
+            { "name": "Eco-Friendly Products", "details": "We use safe and effective cleaning agents." },
+            { "name": "Attention to Detail", "details": "Your bike will look as good as new!" }
         ]
     }
 ];

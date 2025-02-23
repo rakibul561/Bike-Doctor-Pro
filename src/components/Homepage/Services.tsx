@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import ServiceCard from '../cards/ServiceCard';
+import Link from 'next/link'; // Next.js এর লিঙ্ক কম্পোনেন্ট
 
 interface Facility {
   name: string;
@@ -49,11 +50,19 @@ const Services: React.FC = () => {
             believable.
           </p>
         </div>
+        {/* প্রথম ৬টি সার্ভিস দেখানোর জন্য slice ব্যবহার */}
         <div className="container mx-auto mt-12 grid grid-cols-1 lg:grid-cols-3 gap-6">
-          {services.length > 0 &&
-            services.map((service) => (
-              <ServiceCard service={service} key={service._id} />
-            ))}
+          {services.slice(0, 6).map((service) => (
+            <ServiceCard service={service} key={service._id} />
+          ))}
+        </div>
+        {/* Show All Services বাটন */}
+        <div className="text-center mt-8">
+          <Link href="/service">
+            <button className="px-6 py-2 bg-primary text-white rounded hover:bg-primary">
+              Show All Services
+            </button>
+          </Link>
         </div>
       </div>
     </div>

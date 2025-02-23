@@ -27,7 +27,12 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
   const { title, img, price, _id } = service || {};
   console.log(service)
   return (
-    <div className="card card-compact bg-base-100 shadow-xl">
+
+    // <Link href=></Link>
+    
+    <Link 
+      href={`/services/${_id}`}
+    className="card card-compact bg-base-100 shadow-xl">
       <figure className="overflow-hidden h-[30vh]">
         <Image height={240} width={640} src={img} alt={title} />
       </figure>
@@ -35,12 +40,12 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
         <h2 className="card-title">{title}</h2>
         <div className="card-actions justify-between items-center">
           <h6 className="text-primary font-semibold">Price : ${price}</h6>
-          <Link href={`/services/${_id}`}>
+          
             <FaLongArrowAltRight className="text-2xl text-primary" />
-          </Link>
+     
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

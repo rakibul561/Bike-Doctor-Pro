@@ -1,8 +1,5 @@
 
 import { connectDB } from "@/components/lib/connectDB"
-
-
- 
   export const GET = async () => {
     const db = await connectDB();
     const servicesCollection = db.collection('services');
