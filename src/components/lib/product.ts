@@ -1,5 +1,5 @@
 export const products = [
-  [
+ 
       {
         "name": "Car Engine Plug",
         "price": "20.00",
@@ -73,5 +73,5 @@ export const products = [
         "description": "Weather-resistant motorbike cover for protection.",
         "img": "https://i.ibb.co/XfRHfVxw/12.jpg"
       }
-  ]
+  
 ];

@@ -49,8 +49,8 @@ const Services: React.FC = () => {
             believable.
           </p>
         </div>
-        {/* প্রথম ৬টি সার্ভিস দেখানোর জন্য slice ব্যবহার */}
-        <div className="container mx-auto mt-12 grid grid-cols-1 lg:grid-cols-3 gap-6">
+        
+        <div className="max-w-7xl  mx-auto p-2 lg:p-0 mt-12 grid grid-cols-1 lg:grid-cols-3 gap-6">
           {services.slice(0, 6).map((service) => (
             <ServiceCard service={service} key={service._id} />
           ))}

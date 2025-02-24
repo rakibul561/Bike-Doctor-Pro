@@ -3,59 +3,35 @@ import React from "react";
 
 const Features = () => {
   return (
-    <div className="container mx-auto  mb-10">
-      <div className="text-center container mx-auto">
+    <div className="  max-w-7xl mx-auto px-4 mb-10">
+      <div className="text-center">
         <h3 className="text-2xl font-bold text-orange-600">Core Features</h3>
         <h2 className="text-5xl">Why Choose Us</h2>
-        <p>
-          the majority have suffered alteration in some form, by injected
-          humour, or randomised <br /> words which do not look even slightly
+        <p className="max-w-2xl mx-auto">
+          The majority have suffered alteration in some form, by injected
+          humour, or randomised words which do not look even slightly
           believable.
         </p>
       </div>
-     
-      <div className="flex  lg:ml-44 lg:gap-20 gap-6 mt-5">
-      <div className="w-32 p-8 hover:text-primary border">
-        <Image  width={100} height={200} src={"/assets/icons/check.svg"} alt="iamge"/>
-        <h1 className="text-center font-bold mt-2">100% Guranty</h1>
-        </div>
-     
-     
 
-        <div className="w-32 p-8 hover:text-primary border">
-        <Image  width={100} height={200} src={"/assets/icons/deliveryt.svg"} alt="iamge"/>
-        <h1 className="text-center font-bold mt-2">Timely Delivery</h1>
-        </div>
-        <div className="w-32 p-8 hover:text-primary border">
-        <Image  width={100} height={200} src={"/assets/icons/Wrench.svg"} alt="iamge"/>
-        <h1 className="text-center font-bold mt-2">Best Equipment</h1>
-        </div>
-
-
-        <div className="w-32 p-8 hover:text-primary border">
-        <Image  width={100} height={200} src={"/assets/icons/person.svg"} alt="iamge"/>
-        <h1 className="text-center font-bold mt-2">24/7 Support</h1>
-        </div>
-
-
-
-        <div className="w-32 p-8 hover:text-primary border">
-        <Image  width={100} height={200} src={"/assets/icons/quote.svg"} alt="iamge"/>
-        <h1 className="text-center font-bold mt-2">question</h1>
-        </div>
-
-
-        <div className="w-32 p-8 hover:text-primary border">
-        <Image  width={100} height={200} src={"/assets/icons/group.svg"} alt="iamge"/>
-        <h1 className="text-center font-bold mt-2">Expert Team</h1>
-        </div>
-
-       
-      
-
-       
-
-
+      {/* Responsive Grid Layout */}
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 mt-10 justify-center">
+        {[
+          { src: "/assets/icons/check.svg", title: "100% Guarantee" },
+          { src: "/assets/icons/deliveryt.svg", title: "Timely Delivery" },
+          { src: "/assets/icons/Wrench.svg", title: "Best Equipment" },
+          { src: "/assets/icons/person.svg", title: "24/7 Support" },
+          { src: "/assets/icons/quote.svg", title: "Question" },
+          { src: "/assets/icons/group.svg", title: "Expert Team" },
+        ].map((feature, index) => (
+          <div
+            key={index}
+            className="w-full sm:w-32 p-6 border hover:text-primary flex flex-col items-center text-center"
+          >
+            <Image width={50} height={50} src={feature.src} alt={feature.title} />
+            <h1 className="font-bold mt-2">{feature.title}</h1>
+          </div>
+        ))}
       </div>
     </div>
   );

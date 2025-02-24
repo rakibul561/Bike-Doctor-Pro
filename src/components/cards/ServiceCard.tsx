@@ -28,23 +28,27 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
 
   return (
 
-    // <Link href=></Link>
+
+<Link href={`/services/${_id}`}>
+
+
+<div className="p-4 border rounded-lg shadow-lg">
+      <div className="w-full h-48 md:h-64 lg:h-72 relative">
+        <Image 
+            layout="fill"
+            objectFit="cover"
+            className="rounded-t-lg"
+            src={img} 
+            alt="product"
+        />
+    </div>
+      <h3 className="text-xl font-bold">{title}</h3>
     
-    <Link 
-      href={`/services/${_id}`}
-    className="card card-compact bg-base-100 shadow-xl">
-      <figure className="overflow-hidden h-[30vh]">
-        <Image height={240} width={640} src={img} alt={title} />
-      </figure>
-      <div className="card-body">
-        <h2 className="card-title">{title}</h2>
-        <div className="card-actions justify-between items-center">
-          <h6 className="text-primary font-semibold">Price : ${price}</h6>
-          
-            <FaLongArrowAltRight className="text-2xl text-primary" />
-     
-        </div>
-      </div>
+     <div className="flex justify-between">
+     <p className=""><span className="text-orange-600 font-bold">Price:${price}</span></p>
+     <FaLongArrowAltRight className="text-2xl text-primary" />
+     </div>
+    </div>
     </Link>
   );
 };

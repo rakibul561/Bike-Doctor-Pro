@@ -11,3 +11,17 @@
     const service = res.json();
     return service ;
  }
+
+  export const getProductDetails = async (id: any) =>{
+    const res = await fetch(`http://localhost:3000/products/api/${id}`)
+    const product = res.json();
+    return product ;
+ }
+
+
+  export const getReviews = async () =>{
+    const res = await fetch('http://localhost:3000/review/api/get-all')
+    const review = res.json()
+    return review;
+    
+  }
