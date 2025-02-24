@@ -31,7 +31,6 @@ const Services: React.FC = () => {
   useEffect(() => {
     const fetchData = async () => {
       const data = await getServices();
-      console.log('Data is ready', data);
       setServices(data);
     };
 

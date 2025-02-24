@@ -25,7 +25,7 @@ interface ServiceCardProps {
 
 const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
   const { title, img, price, _id } = service || {};
-  console.log(service)
+
   return (
 
     // <Link href=></Link>
