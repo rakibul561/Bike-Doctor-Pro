@@ -1,25 +1,27 @@
+/* eslint-disable prefer-const */
 import { getReviews } from '@/Services/getServices';
 import React from 'react';
+import AllReview from '../cards/AllReview';
 
 const Review = async () => {
-    const reviews = await getReviews();
-    console.log("Server Data:", reviews);
+    let data = await getReviews();  // সম্পূর্ণ ডাটা নিয়ে আসা হলো
+    console.log("Server Data:", data);
 
-    if (!reviews || !reviews.reviews || reviews.reviews.length === 0) {
-        return <div>No Reviews Available</div>;
+    let reviews = data?.reviews;  // data থেকে reviews বের করে নেওয়া
+
+    if (!Array.isArray(reviews)) {
+        reviews = [];  // যদি অ্যারে না হয়, খালি অ্যারে সেট করুন
     }
 
-    // প্রথম রিভিউ বের করা
-    const firstReview = reviews.reviews[0]; 
-
-    console.log("First Review:", firstReview);
-   console.log(firstReview.image);
-   
     return (
-        <div> 
-            <h2>{firstReview.name}</h2>
-            <img src={firstReview.image} alt={firstReview.name} />
-            <p>{firstReview.description}</p>
+        <div className="p-4">
+            {reviews.length > 0 ? (
+                reviews.map((review) => (
+                    <AllReview key={review._id} review={review} />
+                ))
+            ) : (
+                <p>No reviews found</p>
+            )}
         </div>
     );
 };

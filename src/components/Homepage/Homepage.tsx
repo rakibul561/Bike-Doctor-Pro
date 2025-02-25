@@ -6,6 +6,7 @@ import Team from './Team';
 import Products from './Products';
 import Features from './Features';
 import Review from './Review';
+import ContactInfo from './Contact';
 
 const Homepage = () => {
     return (
@@ -13,8 +14,10 @@ const Homepage = () => {
           <Banner/>
           <About/>
           <Services/>
-          <Team/>
+  
+          <ContactInfo/>
           <Products/>
+          <Team/>
           <Features/>
           <Review/>
             
