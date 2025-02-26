@@ -16,7 +16,7 @@ const Page: React.FC<{ params: { id: string } }> = async ({ params }) => {
   }
 
   const { img, _id, name, description, price } = detailse.product;
-  console.log("Product Price: ", price);
+
 
   return (
     <div className="w-11/12 mx-auto my-10 max-w-7xl">
@@ -76,7 +76,7 @@ const Page: React.FC<{ params: { id: string } }> = async ({ params }) => {
             <h2 className="text-lg md:text-xl font-bold">Price: </h2>
             <p className="text-2xl text-rose-500">${price}</p>
           </div>
-          <Link href={`/checkout/${_id}`}>
+          <Link href={`/booking/${_id}`}>
             <button className="bg-rose-500 px-4 py-2 rounded-lg w-full text-white text-lg font-semibold">
               Check out
             </button>

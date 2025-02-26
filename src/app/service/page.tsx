@@ -43,7 +43,7 @@ const AllServices: React.FC = () => {
         <h2 className="text-5xl font-bold font-mono">All Services</h2>
       </div>
       {/* এখানে সকল সার্ভিস দেখানো হচ্ছে */}
-      <div className="container mx-auto mt-12 grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div className=" max-w-7xl mx-auto mt-12 grid grid-cols-1 lg:grid-cols-3 gap-6">
         {services.map((service) => (
           <ServiceCard service={service} key={service._id} />
         ))}

@@ -35,7 +35,7 @@ export const reviews = [
       "id": 5,
       "name": "Lisa Ahmed",
       "profession": "Doctor",
-      "review": "Ordered a helmet from their online store, and it's of excellent quality. Satisfied with their service!",
+      "comment": "Ordered a helmet from their online store, and it's of excellent quality. Satisfied with their service!",
       "rating": 4.7,
       "image": "https://i.ibb.co/8Ljk63HR/cheerful-man-with-open-book-his-hands-smiles-happily-dresssed-casually-141192-2107.jpg"
     }
