@@ -3,7 +3,7 @@ import { getProductDetails } from "@/Services/getServices";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
-import { ToastContainer } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 
 
 const Booking: React.FC<{ params: { id: string } }> =  ({ params }) => {
@@ -20,9 +20,53 @@ const Booking: React.FC<{ params: { id: string } }> =  ({ params }) => {
   const { img, _id, name, description, price } = product;
     
 
-  const handleBooking = async (event) =>{
-    event.preventDefault()
-  } 
+//   const handleBooking = async (event: { preventDefault: () => void; }) =>{
+//     event.preventDefault()
+//    }
+ const handleBooking = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+  
+    const newBooking = {
+      email: data?.user?.email,
+      name: data?.user?.name,
+      address: formData.get("address") as string,
+      phone: formData.get("phone") as string,
+      date: formData.get("date") as string,
+      serviceTitle: name,
+      serviceID: _id,
+      price: price,
+      ...product
+    };
+  
+    try {
+      const resp = await fetch("http://localhost:3000/booking/api/new-booking", {
+        method: "POST",
+        body: JSON.stringify(newBooking),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+  
+      const response = await resp.json();
+      if (resp.ok) {
+        toast.success(response.message || "Booking successful!");
+      } else {
+        toast.error(response.error || "Booking failed!");
+      }
+    } catch (error) {
+      console.error("Error submitting booking:", error);
+      toast.error("Something went wrong. Please try again.");
+    }
+  }; 
+          
+
+ 
+ 
+
+     
+
 
 
   useEffect(()=>{
