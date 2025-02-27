@@ -1,6 +1,11 @@
+
+ 'use client'
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+
+import "aos/dist/aos.css";
+import Aos from "aos";
+import { useEffect } from "react";
 
 // Define the Product type
 interface Product {
@@ -14,11 +19,19 @@ interface Product {
 // Define props type for ProductsCard
 interface ProductsCardProps {
   product: Product;
-}
+}  
+
+
 
 const ProductsCard: React.FC<ProductsCardProps> = ({ product }) => {
-  return (
-    <div className="p-4 border rounded-lg shadow-lg">
+
+
+  useEffect(()=>{
+    Aos.init();
+   },[])
+  
+  return ( 
+    <div className="p-4 border rounded-lg shadow-lg" data-aos="zoom-in">
       <Link 
        href={`/products/${product._id}`}
       > 

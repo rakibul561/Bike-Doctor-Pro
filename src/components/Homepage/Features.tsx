@@ -3,7 +3,7 @@ import React from "react";
 
 const Features = () => {
   return (
-    <div className="  max-w-7xl mx-auto px-4 mb-10">
+    <div className="  max-w-7xl mx-auto px-4 mb-10  ">
       <div className="text-center">
         <h3 className="text-2xl font-bold text-orange-600">Core Features</h3>
         <h2 className="text-5xl">Why Choose Us</h2>
@@ -26,7 +26,7 @@ const Features = () => {
         ].map((feature, index) => (
           <div
             key={index}
-            className="w-full sm:w-32 p-6 border hover:text-primary flex flex-col items-center text-center"
+            className="w-full sm:w-32 p-6 border hover:text-primary flex flex-col items-center transition-transform duration-500 hover:scale-150 text-center"
           >
             <Image width={50} height={50} src={feature.src} alt={feature.title} />
             <h1 className="font-bold mt-2">{feature.title}</h1>
