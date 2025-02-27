@@ -39,7 +39,8 @@ const Booking: React.FC<{ params: { id: string } }> =  ({ params }) => {
       price: price,
       ...product
     };
-  
+   
+    // data aded in mongo db 
     try {
       const resp = await fetch("http://localhost:3000/booking/api/new-booking", {
         method: "POST",
