@@ -1,11 +1,15 @@
 "use client";
 
-import SocialSignin from "@/components/Shared/SocialSignin ";
+
+
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useRef } from "react";
+import { toast } from "react-toastify";
 
 const SignUpPage = () => {
+  const formRef = useRef<HTMLFormElement | null>(null); // Use ref to reference the form
+
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
@@ -25,7 +29,11 @@ const SignUpPage = () => {
     });
 
     if (resp.status === 200) {
-      event.currentTarget.reset();
+      // Check if the form is available before calling reset
+      if (formRef.current) {
+        formRef.current.reset();
+      }
+      toast.success("Signup successful!");
     }
   };
 
@@ -48,7 +56,7 @@ const SignUpPage = () => {
           <h6 className="text-2xl sm:text-3xl font-semibold text-primary text-center mb-6">
             Sign Up
           </h6>
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <form onSubmit={handleSubmit} ref={formRef} className="space-y-4">
             <div>
               <label htmlFor="name" className="block text-sm font-medium">
                 Name
@@ -94,8 +102,8 @@ const SignUpPage = () => {
           </form>
 
           <div className="mt-6 text-center">
-            <h6 className="text-gray-600">or sign in with</h6>
-            <SocialSignin/>
+            {/* <h6 className="text-gray-600">or sign in with</h6>
+            <SocialSignin /> */}
           </div>
 
           <h6 className="mt-6 text-center">

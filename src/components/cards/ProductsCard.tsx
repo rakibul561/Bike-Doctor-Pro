@@ -6,6 +6,7 @@ import Link from "next/link";
 import "aos/dist/aos.css";
 import Aos from "aos";
 import { useEffect } from "react";
+import { FaArrowRightLong } from "react-icons/fa6";
 
 // Define the Product type
 interface Product {
@@ -50,7 +51,9 @@ const ProductsCard: React.FC<ProductsCardProps> = ({ product }) => {
      <p className="mt-4"><span className="text-orange-600 font-bold">Price:${product.price}</span></p>
      <Link 
       href={`/products/${product._id}`}
-      className="mt-4"><span className="text-orange-600 font-bold">Buy Now</span></Link>
+      className="mt-4 text-3xl"><span className="text-orange-600 font-bold">
+         <FaArrowRightLong/>
+        </span></Link>
      </div>
      </Link>
     </div>

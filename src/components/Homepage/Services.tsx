@@ -28,6 +28,8 @@ const getServices = async (): Promise<Service[]> => {
 const Services: React.FC = () => {
   const [services, setServices] = useState<Service[]>([]);
 
+
+
   useEffect(() => {
     const fetchData = async () => {
       const data = await getServices();
@@ -35,7 +37,7 @@ const Services: React.FC = () => {
     };
 
     fetchData();
-  }, []);
+  }, []); 
 
   return (
     <div>
@@ -44,10 +46,9 @@ const Services: React.FC = () => {
           <h3 className="text-2xl font-bold text-orange-600">Our Services</h3>
           <h2 className="text-5xl">Our Service Area</h2>
           <p>
-            the majority have suffered alteration in some form, by injected
-            humour, or randomised <br /> words which do not look even slightly
-            believable.
-          </p>
+  We offer a wide range of high-quality services tailored to meet your specific needs. <br /> Our expert team is dedicated to providing exceptional solutions  that bring value and satisfaction <br /> to our clients. Explore our services and discover how we can assist you in achieving your goals.
+</p>
+
         </div>
         
         <div className="max-w-7xl  mx-auto p-2 lg:p-0 mt-12 grid grid-cols-1 lg:grid-cols-3 gap-6">

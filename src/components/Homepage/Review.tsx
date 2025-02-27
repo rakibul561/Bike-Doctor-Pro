@@ -15,13 +15,14 @@ const Review = async () => {
 
   return (
     <div className="mt-20 mb-20">
-      <div className="text-center">
-        <h3 className="text-2xl font-bold text-orange-600">Core Features</h3>
-        <h2 className="text-5xl">Why Choose Us</h2>
+      <div className="text-center space-y-2">
+        <h3 className="text-3xl font-bold text-orange-600">Testimonial</h3>
+        <h2 className="text-5xl font-bold">What Our Customers Say</h2>
         <p className="max-w-2xl mx-auto">
-          The majority have suffered alteration in some form, by injected
-          humour, or randomised words which do not look even slightly
-          believable.
+          Our customers love the products and services we offer. Here's what
+          they have to say about their experiences. From excellent quality to
+          exceptional customer support, we take pride in making every
+          interaction a positive one.
         </p>
       </div>
       <div className="grid grid-cols-1 mt-20  max-w-7xl mx-auto lg:grid-cols-3">

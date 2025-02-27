@@ -50,7 +50,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
           <p className="">
             <span className="text-orange-600 font-bold">Price:${price}</span>
           </p>
-          <FaLongArrowAltRight className="text-2xl text-primary" />
+          <FaLongArrowAltRight className="text-3xl text-primary" />
         </div>
       </div>
     </Link>

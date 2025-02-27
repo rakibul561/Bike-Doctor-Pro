@@ -1,83 +1,80 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
-import SocialSignin from "@/components/Shared/SocialSignin ";
+
+
+import { signIn } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import React from "react";
+import { toast } from "react-toastify";
 
-const SignUpPage = () => {
+const Page: React.FC = () => {
+  const router = useRouter();
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
     const formData = new FormData(event.currentTarget);
-    const newUser = {
-      name: formData.get("name") as string,
-      email: formData.get("email") as string,
-      password: formData.get("password") as string,
-    };
-     
-    const resp = await fetch("http://localhost:3000/signup/api", {
-      method: "POST",
-      body: JSON.stringify(newUser),
-      headers: { "Content-Type": "application/json" }
+    const email = formData.get("email") as string;
+    const password = formData.get("password") as string;
+
+    const resp = await signIn('credentials', {
+      email,
+      password,
+      redirect: false,
     });
 
-    if(resp.status === 200){
-      event.currentTarget.reset();
+    if(resp?.status == 200){
+      router.push('/')
+      toast.success("login succesfull")
     }
   };
 
   return (
-    <div className="container px-6 md:px-24 mx-auto py-12 md:py-24">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-        <div className="flex justify-center">
+    <div className="container px-24 mx-auto py-24">
+      <div className="grid grid-cols-2 gap-12 items-center">
+        <div>
           <Image
             src="/assets/images/login/login.svg"
-            height={400}
-            width={400}
-            alt="Sign Up"
-            className="w-full max-w-xs md:max-w-md"
+            height="540"
+            width="540"
+            alt="login image"
           />
         </div>
-        <div className="border-2 p-6 md:p-12 rounded-lg shadow-lg">
-          <h6 className="text-2xl md:text-3xl font-semibold text-primary text-center mb-8">
-            Sign Up
+        <div className="border-2 p-12">
+          <h6 className="text-3xl font-semibold text-primary text-center mb-12">
+            Sign In
           </h6>
-          <form onSubmit={handleSubmit}>
-            <label htmlFor="name" className="block text-lg font-medium">Name</label>
+          <form onSubmit={handleSubmit} action="">
+            <label htmlFor="email">Email</label> <br />
             <input
               type="text"
-              name="name"
-              placeholder="Your name"
-              className="mt-2 w-full input input-bordered"
-            />
-            <label htmlFor="email" className="block mt-4 text-lg font-medium">Email</label>
-            <input
-              type="email"
               name="email"
-              placeholder="Your email"
-              className="mt-2 w-full input input-bordered"
+              placeholder="your email"
+              className="mt-3 w-full input input-bordered"
             />
-            <label htmlFor="password" className="block mt-4 text-lg font-medium">Password</label>
+            <br /> <br />
+            <label htmlFor="password">Password</label> <br />
             <input
               type="password"
               name="password"
-              placeholder="Your password"
-              className="mt-2 w-full input input-bordered"
+              placeholder="your password"
+              className="w-full mt-3 input input-bordered"
             />
+            <br />
             <button
               type="submit"
-              className="w-full btn btn-primary mt-8 text-lg"
+              className="w-full btn btn-primary mt-12 text-lg"
             >
-              Sign Up
+              Sign In
             </button>
           </form>
           <div>
-            <h6 className="my-8 text-center">or sign in with</h6>
-            <SocialSignin />
-            <h6 className="my-8 text-center">
-              Already have an account?{" "}
-              <Link className="text-primary font-semibold" href="/login">
-                Sign In
+            {/* <h6 className="my-12 text-center">or sign in with</h6>
+            <SocialSignin /> */}
+            <h6 className="my-12 text-center">
+              not have account ?{" "}
+              <Link className="text-primary font-semibold" href={"/signup"}>
+                Sign Up
               </Link>
             </h6>
           </div>
@@ -87,4 +84,4 @@ const SignUpPage = () => {
   );
 };
 
-export default SignUpPage;
+export default Page;
