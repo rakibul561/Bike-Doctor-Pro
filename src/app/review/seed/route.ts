@@ -4,6 +4,7 @@
 import { connectDB } from "@/components/lib/connectDB"
 
 import {  reviews } from "@/components/lib/review";
+import { NextResponse } from "next/server";
 
  
   export const GET =  async () =>{
@@ -13,7 +14,7 @@ import {  reviews } from "@/components/lib/review";
     try { 
         await reviewCollection.deleteMany();
         const res = await reviewCollection.insertMany(reviews)
-        return Response.json({message: " review added  succesfull"})
+        return NextResponse.json({message: " review added  succesfull"})
         
     } catch (error) {
          console.log(error);

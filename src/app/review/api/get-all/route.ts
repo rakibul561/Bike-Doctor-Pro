@@ -1,5 +1,6 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
+
 import { connectDB } from "@/components/lib/connectDB"
+import { NextResponse } from "next/server";
 
 
  
@@ -10,7 +11,7 @@ import { connectDB } from "@/components/lib/connectDB"
     try { 
      
         const reviews = await reviewCollection.find().toArray()
-        return Response.json({reviews})
+        return NextResponse.json({reviews})
         
     } catch (error) {
          console.log(error);

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import Rating from "react-rating";
+
 
 interface ReviewProps {
   review: {
@@ -13,23 +13,22 @@ interface ReviewProps {
 }
 
 const AllReview: React.FC<ReviewProps> = ({ review }) => {
-  console.log("Received Review Data:", review);
-
   return (
     <section className="bg-white dark:bg-gray-900 transition-transform duration-500 hover:scale-110">
-        
       <div className=" px-4 py-2 ">
         {/* রিভিউ ডাটা ডায়নামিকভাবে দেখানো */}
         <div className="">
           <div className="p-8 space-y-4 border rounded-lg dark:border-gray-700">
             <div className="flex items-center  -mx-2">
-              <img
-                className="object-cover mx-2 rounded-full w-14 shrink-0 h-14 ring-4 ring-gray-300 dark:ring-gray-700"
-                src={review.image || "https://via.placeholder.com/150"}
-                alt={review.name || "Reviewer"}
-              /> 
+           
 
-               {/* <Image src={review.image ?? "https://via.placeholder.com/150"}  width={14} height={14} alt="Reviewr"/> */}
+              <Image
+                src={review.image ?? "https://via.placeholder.com/150"}
+                width={56} 
+                height={56} 
+                alt={review.name || "Reviewer"}
+                className="object-cover mx-2 rounded-full ring-4 ring-gray-300 dark:ring-gray-700"
+              />
 
               <div className="mx-2">
                 <h1 className="font-semibold text-gray-800 dark:text-white">

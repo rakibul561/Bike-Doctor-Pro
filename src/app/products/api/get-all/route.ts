@@ -1,5 +1,6 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
+
 import { connectDB } from "@/components/lib/connectDB"
+import { NextResponse } from "next/server";
 
 
  
@@ -10,7 +11,7 @@ import { connectDB } from "@/components/lib/connectDB"
     try { 
      
         const products = await productsCollection.find().toArray()
-        return Response.json({products})
+        return NextResponse.json({products})
         
     } catch (error) {
          console.log(error);

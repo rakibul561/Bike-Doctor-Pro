@@ -1,27 +1,44 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
- 
-  export const getServices = async () =>{
-    const res = await fetch('http://localhost:3000/services/api/get-all')
-    const data = res.json();
-    return data ;
- }
- 
-  export const getServicesDetails = async (id: any) =>{
-    const res = await fetch(`http://localhost:3000/services/api/${id}`)
-    const service = res.json();
-    return service ;
- }
 
-  export const getProductDetails = async (id: any) =>{
-    const res = await fetch(`http://localhost:3000/products/api/${id}`)
-    const product = res.json();
-    return product ;
- }
+import axios from "axios";
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL; // ✅ API URL সঠিকভাবে সেট করা
 
-  export const getReviews = async () =>{
-    const res = await fetch('http://localhost:3000/review/api/get-all')
-    const review = res.json()
-    return review;
-    
+export const getServices = async () => {
+  try {
+    const res = await axios.get(`${API_URL}/services/api/get-all`);
+    return res.data;
+  } catch (error) {
+    console.error("Error fetching services:", error);
+    return [];
   }
+};
+
+export const getServicesDetails = async (id: string) => {
+  try {
+    const res = await axios.get(`${API_URL}/services/api/${id}`);
+    return res.data;
+  } catch (error) {
+    console.error(`Error fetching service details for ID ${id}:`, error);
+    return null;
+  }
+};
+
+export const getProductDetails = async (id: string) => {
+  try {
+    const res = await axios.get(`${API_URL}/products/api/${id}`);
+    return res.data;
+  } catch (error) {
+    console.error(`Error fetching product details for ID ${id}:`, error);
+    return null;
+  }
+};
+
+export const getReviews = async () => {
+  try {
+    const res = await axios.get(`${API_URL}/review/api/get-all`);
+    return res.data;
+  } catch (error) {
+    console.error("Error fetching reviews:", error);
+    return [];
+  }
+};

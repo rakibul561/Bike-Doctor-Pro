@@ -14,11 +14,12 @@ interface Product {
 
 const Products: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);  // Loading state
 
   useEffect(() => {
     const getProducts = async () => {
       try {
-        const res = await fetch("http://localhost:3000/products/api/get-all");
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/products/api/get-all`);
         const data = await res.json();
 
         console.log("API Response:", data); // ডাটা চেক করার জন্য লগ
@@ -32,21 +33,28 @@ const Products: React.FC = () => {
         }
       } catch (error) {
         console.error("Failed to fetch products:", error);
+      } finally {
+        setLoading(false);  // Set loading to false once data is fetched
       }
     };
+
     getProducts();
   }, []);
+
+  if (loading) {
+    return <div>Loading...</div>;  // Simple loading indicator
+  }
 
   return (
     <div>
       <div className="text-center max-w-7xl mx-auto mb-10 mt-20">
         <h3 className="text-2xl font-bold text-orange-600">Our Products</h3>
         <h2 className="text-5xl">Our Products Area</h2>
-        <p >
+        <p>
           Discover a wide variety of high-quality products that cater to all
           your needs. <br /> From the latest trends to trusted essentials, we
           offer products designed to <br /> provide value, durability, and
-          satisfaction. Explore our collection and find exactly what you're
+          satisfaction. Explore our collection and find exactly what youre
           looking for.
         </p>
 

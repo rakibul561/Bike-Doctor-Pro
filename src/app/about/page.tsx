@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import React from 'react';
 
 const Aboutpage:React.FC = () => {
@@ -7,11 +8,10 @@ const Aboutpage:React.FC = () => {
     <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
       <div className="flex flex-col max-w-screen-lg overflow-hidden bg-white border rounded shadow-sm lg:flex-row sm:mx-auto">
         <div className="relative lg:w-1/2">
-          <img
-            src="https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260"
-            alt=""
-            
-          />
+   
+<Image  width={640} height={ 640} src={"/assets/images/team/3.jpg"} alt="iamge"/>
+
+
           <svg
             className="absolute top-0 right-0 hidden h-full text-white lg:inline-block"
             viewBox="0 0 20 104"

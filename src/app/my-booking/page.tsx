@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
@@ -107,7 +108,7 @@ const Page = () => {
                 )
               ) : (
                 <tr>
-                  <td colSpan="7" className="text-center">
+                  <td className="text-center">
                     No bookings found
                   </td>
                 </tr>

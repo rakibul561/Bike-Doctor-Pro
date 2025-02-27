@@ -2,6 +2,7 @@
 
 import ServiceCard from '@/components/cards/ServiceCard';
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
 interface Facility {
   name: string;
@@ -19,9 +20,13 @@ interface Service {
 }
 
 const getServices = async (): Promise<Service[]> => {
-  const res = await fetch('http://localhost:3000/services/api/get-all');
-  const data = await res.json();
-  return data.services;
+  try {
+    const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/services/api/get-all`);
+    return res.data.services;
+  } catch (error) {
+    console.error("Error fetching services:", error);
+    return []; // যদি কোনো সমস্যা হয়, খালি অ্যারে রিটার্ন করবে
+  }
 }
 
 const AllServices: React.FC = () => {
@@ -43,7 +48,7 @@ const AllServices: React.FC = () => {
         <h2 className="text-5xl font-bold font-mono">All Services</h2>
       </div>
       {/* এখানে সকল সার্ভিস দেখানো হচ্ছে */}
-      <div className=" max-w-7xl mx-auto mt-12 grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div className="max-w-7xl mx-auto mt-12 grid grid-cols-1 lg:grid-cols-3 gap-6">
         {services.map((service) => (
           <ServiceCard service={service} key={service._id} />
         ))}

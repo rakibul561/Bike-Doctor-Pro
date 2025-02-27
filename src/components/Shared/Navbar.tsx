@@ -28,7 +28,7 @@ const Navbar: React.FC = () => {
         </div>
 
         {/* Nav links for large screens */}
-        <div className={`navbar-center hidden md:flex flex-wrap justify-center space-x-4 ${isMenuOpen ? 'block' : 'hidden md:block'}`}>
+        <div className={`navbar-center lg:ml-36 text-center hidden md:flex flex-wrap justify-center space-x-4  ${isMenuOpen ? 'block' : 'hidden md:block'}`}>
           <Link href={'/'} className="font-bold hover:text-primary">Home</Link>
           <Link href={'/about'} className="font-bold hover:text-primary">About</Link>
           <Link href={'/service'} className="font-bold hover:text-primary">Services</Link>

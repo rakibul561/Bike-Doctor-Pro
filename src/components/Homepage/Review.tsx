@@ -5,7 +5,7 @@ import AllReview from "../cards/AllReview";
 
 const Review = async () => {
   let data = await getReviews(); // সম্পূর্ণ ডাটা নিয়ে আসা হলো
-  console.log("Server Data:", data);
+ 
 
   let reviews = data?.reviews; // data থেকে reviews বের করে নেওয়া
 
@@ -19,7 +19,7 @@ const Review = async () => {
         <h3 className="text-3xl font-bold text-orange-600">Testimonial</h3>
         <h2 className="text-5xl font-bold">What Our Customers Say</h2>
         <p className="max-w-2xl mx-auto">
-          Our customers love the products and services we offer. Here's what
+          Our customers love the products and services we offer. Heres what
           they have to say about their experiences. From excellent quality to
           exceptional customer support, we take pride in making every
           interaction a positive one.
