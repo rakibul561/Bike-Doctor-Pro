@@ -2,7 +2,8 @@
 import axios from "axios";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL; // ✅ API URL সঠিকভাবে সেট করা
-
+ 
+  // get services
 export const getServices = async () => {
   try {
     const res = await axios.get(`${API_URL}/services/api/get-all`);
