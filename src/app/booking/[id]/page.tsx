@@ -36,7 +36,8 @@ const Booking: React.FC<{ params: { id: string } }> = ({ params }) => {
 
     const newBooking = {
       email: data?.user?.email,
-      name: data?.user?.name,
+      
+      name: formData.get("name") as string,
       address: formData.get("address") as string,
       phone: formData.get("phone") as string,
       date: formData.get("date") as string,
@@ -67,6 +68,13 @@ const Booking: React.FC<{ params: { id: string } }> = ({ params }) => {
       toast.error("Something went wrong. Please try again.");
     }
   };
+
+
+   
+
+
+
+   
 
   useEffect(() => {
     loadProducts();

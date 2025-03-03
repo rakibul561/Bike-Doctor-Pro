@@ -25,7 +25,14 @@ interface CheckoutParams {
 }
 
 const Checkout: React.FC<CheckoutParams> = ({ params }) => {
-  const { data } = useSession();
+  const {data } = useSession() ;
+  console.log(data);
+  
+
+  
+
+  
+ 
   const [service, setService] = useState<Service | null>(null);
 
   const loadService = async () => {
@@ -41,7 +48,8 @@ const Checkout: React.FC<CheckoutParams> = ({ params }) => {
   
     const newBooking = {
       email: data?.user?.email,
-      name: data?.user?.name,
+      
+      name: formData.get("name") as string,
       address: formData.get("address") as string,
       phone: formData.get("phone") as string,
       date: formData.get("date") as string,
