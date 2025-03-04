@@ -1,7 +1,6 @@
 import Image from "next/image";
 import React from "react";
 
-
 interface ReviewProps {
   review: {
     _id: string;
@@ -20,12 +19,10 @@ const AllReview: React.FC<ReviewProps> = ({ review }) => {
         <div className="">
           <div className="p-8 space-y-4 border rounded-lg dark:border-gray-700">
             <div className="flex items-center  -mx-2">
-           
-
               <Image
                 src={review.image ?? "https://via.placeholder.com/150"}
-                width={56} 
-                height={56} 
+                width={56}
+                height={56}
                 alt={review.name || "Reviewer"}
                 className="object-cover mx-2 rounded-full ring-4 ring-gray-300 dark:ring-gray-700"
               />
@@ -34,7 +31,6 @@ const AllReview: React.FC<ReviewProps> = ({ review }) => {
                 <h1 className="font-semibold text-gray-800 dark:text-white">
                   {review.name || "Anonymous"}
                 </h1>
-                {/* <span className="text-sm text-gray-500">Rating: {review.rating ? `${review.rating} / 5` : "No rating given"}</span> */}
                 <span className="text-yellow-400 text-sm">★</span>
                 <span className="text-sm text-gray-600 ml-1">
                   ({review.rating} reviews)

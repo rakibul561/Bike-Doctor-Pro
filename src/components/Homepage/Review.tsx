@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable prefer-const */
 import { getReviews } from "@/Services/getServices";
 import React from "react";
@@ -25,15 +26,15 @@ const Review = async () => {
           interaction a positive one.
         </p>
       </div>
-      <div className="grid grid-cols-1 mt-20  max-w-7xl mx-auto lg:grid-cols-3">
-        {reviews.length > 0 ? (
-          reviews.map((review) => (
-            <AllReview key={review._id} review={review} />
-          ))
-        ) : (
-          <p>No reviews found</p>
-        )}
-      </div>
+      <div className="grid grid-cols-1 mt-20 max-w-7xl mx-auto lg:grid-cols-3">
+      {reviews.length > 0 ? (
+        reviews.map((review: { _id: any; name?: string | undefined; comment?: string | undefined; rating?: number | undefined; image?: string | undefined; }) => (
+          <AllReview key={review._id} review={review} />
+        ))
+      ) : (
+        <p>No reviews found</p>
+      )}
+    </div>
     </div>
   );
 };

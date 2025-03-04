@@ -36,8 +36,8 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <ToastContainer/>
         <AuthProvider> 
+        <ToastContainer/>
         <Navbar/>
         {children}
         <Footer/>

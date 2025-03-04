@@ -17,7 +17,6 @@ const Page: React.FC<{ params: { id: string } }> = async ({ params }) => {
 
   const { img, _id, name, description, price } = detailse.product;
 
-
   return (
     <div className="w-11/12 mx-auto my-10 max-w-7xl">
       <div>
