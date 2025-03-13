@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 import "aos/dist/aos.css";
 import Aos from "aos";
@@ -28,7 +29,7 @@ const ProductsCard: React.FC<ProductsCardProps> = ({ product }) => {
     <div className="p-4 border rounded-lg shadow-lg" data-aos="zoom-in">
       <Link href={`/products/${product._id}`}>
       
-       <div className="relative w-full h-64">
+       {/* <div className="relative w-full h-64">
        <Image
             src={product.img}
             alt="product"
@@ -37,7 +38,9 @@ const ProductsCard: React.FC<ProductsCardProps> = ({ product }) => {
             className="rounded-t-lg"
           />
 
-       </div>
+       </div> */}
+
+       <img src={product.img} alt="img not found" className=" lg:h-[250px] mx-auto" />
 
 
         

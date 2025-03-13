@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 import React, { useEffect } from "react";
 import { FaLongArrowAltRight } from "react-icons/fa";
@@ -37,14 +38,14 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
     <Link href={`/services/${_id}`}>
       <div className="p-4 border rounded-lg shadow-lg" data-aos= "zoom-in">
         <div className="w-full h-48 md:h-64 lg:h-72 relative">
-          <Image
+          {/* <Image
             layout="fill"
             objectFit="cover"
             className="rounded-t-lg"
             src={img}
             alt="product"
-          />
-          {/* <img src={img} alt="img not found" /> */}
+          /> */}
+          <img src={img} alt="img not found" className=" lg:h-[250px] mx-auto" />
         </div>
         <h3 className="text-xl font-bold">{title}</h3>
 
