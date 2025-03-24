@@ -1,6 +1,6 @@
 import { getProductDetails } from "@/Services/getServices";
 import Image from "next/image";
-import Link from "next/link";
+
 import React from "react";
 
 const Page: React.FC<{ params: { id: string } }> = async ({ params }) => {
@@ -15,7 +15,7 @@ const Page: React.FC<{ params: { id: string } }> = async ({ params }) => {
     );
   }
 
-  const { img, _id, name, description, price } = detailse.product;
+  const { img, name, description, price } = detailse.product;
 
   return (
     <div className="w-11/12 mx-auto my-10 max-w-7xl">
@@ -75,11 +75,11 @@ const Page: React.FC<{ params: { id: string } }> = async ({ params }) => {
             <h2 className="text-lg md:text-xl font-bold">Price: </h2>
             <p className="text-2xl text-rose-500">${price}</p>
           </div>
-          <Link href={`/booking/${_id}`}>
+          <a >
             <button className="bg-rose-500 px-4 py-2 rounded-lg w-full text-white text-lg font-semibold">
               Check out
             </button>
-          </Link>
+          </a>
         </div>
       </div>
     </div>
