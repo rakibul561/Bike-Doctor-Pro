@@ -140,6 +140,22 @@ const page:React.FC = () => {
               Sed ut perspiciatis unde omnis iste natus error sit sed quia
               consequuntur magni voluptatem doloremque.
             </p>
+            <p className="mb-2 text-gray-700">
+              Sed ut perspiciatis unde omnis iste natus error sit sed quia
+              consequuntur magni voluptatem doloremque.
+            </p>
+            <p className="mb-2 text-gray-700">
+              Sed ut perspiciatis unde omnis iste natus error sit sed quia
+              consequuntur magni voluptatem doloremque.
+            </p>
+            <p className="mb-2 text-gray-700">
+              Sed ut perspiciatis unde omnis iste natus error sit sed quia
+              consequuntur magni voluptatem doloremque.
+            </p>
+            <p className="mb-2 text-gray-700">
+              Sed ut perspiciatis unde omnis iste natus error sit sed quia
+              consequuntur magni voluptatem doloremque.
+            </p>
             <Link
               href="/"
               aria-label=""
